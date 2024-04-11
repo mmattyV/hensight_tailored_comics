@@ -76,6 +76,7 @@ class ComicDataset(Dataset):
         with open(json_file, 'r') as f:
             data = json.load(f)
 
+        progress_bar = tqdm(total=len(data.items()))
         for key, value in data.items():
             if key in os.listdir(images_dir):
                 if is_valid_image_file(os.path.join(self.images_dir, key)):
@@ -88,6 +89,7 @@ class ComicDataset(Dataset):
 
                     else:
                         print('Invalid file: ' + key + '. Skipping this file...')
+            progress_bar.update(1)
 
         self.items = list(image_label_dict.items())
         print('Class counts: ', class_counts)
@@ -136,14 +138,13 @@ if use_mps:
 
 data_transforms = {
     'train': transforms.Compose([
-        transforms.RandomResizedCrop(224),
+        transforms.Resize((224, 224)),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ]),
     'val': transforms.Compose([
-        transforms.Resize(224),
-        transforms.CenterCrop(224),
+        transforms.Resize((224, 224)),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ]),
@@ -173,6 +174,7 @@ def train_model(model, criterion, optimizer, lr_scheduler, num_epochs=100):
 
             counter = 0
 
+            progress_bar = tqdm(total=dsets[phase].__len__())
             for data in dset_loaders[phase]:
                 inputs, labels = data
 
@@ -207,6 +209,7 @@ def train_model(model, criterion, optimizer, lr_scheduler, num_epochs=100):
                     print('Reached batch iteration', counter)
 
                 counter += 1
+                progress_bar.update(BATCH_SIZE)
 
                 if phase == 'train':
                     loss.backward()
@@ -323,8 +326,8 @@ if __name__ == '__main__':
         plt.axis("off")
         plt.imshow(img)  # img is now in the correct format for imshow
 
-    plt.show()
     plt.savefig('train_images.png')
+    plt.show()
 
 
     def plot_training_history(losses):
@@ -338,8 +341,8 @@ if __name__ == '__main__':
         plt.ylabel('Loss')
         plt.legend()
 
-        plt.show()
         plt.savefig('loss_plot.png')
+        plt.show()
 
     plot_training_history(losses)
     torch.save(model.state_dict(), 'fine_tuned_best_model.pt')
