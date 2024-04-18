@@ -1,9 +1,6 @@
+### Downloads comic images and their corresponding labels from Danbooru; stores labels in .json file
+
 from constants import *
-import os
-from PIL import Image
-import json
-import tqdm
-import requests
 
 # Creates directory
 def create_dir(path):
@@ -20,39 +17,6 @@ def check_tags_in_tag_string(tag_string, tags):
         return False
     else:
         return tag_list
-    
-# Copied from custom_hymenoptera_dataset.py
-# Checks for valid image files (size and extension)
-def is_valid_image_file(filename, max_pixels=178956970):
-    # Check file name extension
-    valid_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff']
-    if os.path.splitext(filename)[1].lower() not in valid_extensions:
-        print(f"Invalid image file extension \"{filename}\". Skipping this file...")
-        return False
-    
-    # Temporarily disable the decompression bomb check
-    original_max_image_pixels = Image.MAX_IMAGE_PIXELS
-    Image.MAX_IMAGE_PIXELS = None
-    
-    # Verify that image file is intact and check its size
-    try:
-        with Image.open(filename) as img:
-            img.verify()  # Verify if it's an image
-            # Restore the original MAX_IMAGE_PIXELS limit
-            Image.MAX_IMAGE_PIXELS = original_max_image_pixels
-            
-            # Check image size without loading the image into memory
-            if img.size[0] * img.size[1] > max_pixels:
-                print(f"Image {filename} is too large. Skipping this file...")
-                return False
-            return True
-    except (IOError, SyntaxError) as e:
-        print(f"Invalid image file {filename}: {e}")
-        # Ensure the MAX_IMAGE_PIXELS limit is restored even if an exception occurs
-        Image.MAX_IMAGE_PIXELS = original_max_image_pixels
-        return False
-    # Ensure the MAX_IMAGE_PIXELS limit is restored in case of any other unexpected exit
-    Image.MAX_IMAGE_PIXELS = original_max_image_pixels
     
 # Create dir for our comic images
 create_dir(IMAGES_DIR)
