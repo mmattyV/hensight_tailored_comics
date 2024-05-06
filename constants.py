@@ -27,11 +27,11 @@ TAGS = ['action', 'looking_at_another', 'romance', 'sad', 'crying', 'angry', 'sc
 NUM_TAGS = len(TAGS)
 ## TEMP ##
 TOTAL_POSTS = 3727400
-JSON_FILE = 'comic_labels.json'
-TRAIN_JSON = 'comic_labels_train.json'
-VAL_JSON = 'comic_labels_val.json'
-GPU_MODE = 0
-MPS_MODE = 1
+JSON_FILE = 'labels/comic_labels.json'
+TRAIN_JSON = 'labels/comic_labels_train.json'
+VAL_JSON = 'labels/comic_labels_val.json'
+GPU_MODE = 1
+MPS_MODE = 0
 CUDA_DEVICE = 0
 NUM_EPOCHS = 30
 BASE_LR = 0.001

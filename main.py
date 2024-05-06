@@ -275,7 +275,7 @@ if __name__ == '__main__':
         plt.axis("off")
         plt.imshow(img)  # img is now in the correct format for imshow
 
-    plt.savefig('train_images.png')
+    plt.savefig('plots/train_images.png')
     plt.show()
 
 
@@ -294,4 +294,4 @@ if __name__ == '__main__':
         plt.show()
 
     plot_training_history(losses)
-    torch.save(model.state_dict(), 'fine_tuned_best_model.pt')
+    torch.save(model.state_dict(), 'models/fine_tuned_best_model.pt')
