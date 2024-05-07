@@ -116,9 +116,6 @@ def plot_metrics(model, val_dload, val_size, model_name, device=None):
     plt.tight_layout()  # Adjust layout to fit each subplot
     plt.savefig(f'../plots/{model_name}_confusion_matrices.png')
 
-    print('pred: ', total_y_pred)
-    print('true: ', total_y_true)
-
     print(classification_report(
         total_y_true,
         total_y_pred,

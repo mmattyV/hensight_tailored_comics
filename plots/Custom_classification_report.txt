@@ -1,13 +1,13 @@
                     precision    recall  f1-score   support
 
-looking_at_another       0.00      0.00      0.00         3
-               sad       0.00      0.00      0.00         0
-            crying       0.00      0.00      0.00         1
-             angry       0.00      0.00      0.00         1
-         surprised       0.00      0.00      0.00         0
-            couple       0.00      0.00      0.00         1
+looking_at_another       0.00      0.00      0.00       892
+               sad       0.00      0.00      0.00       232
+            crying       0.00      0.00      0.00       766
+             angry       0.00      0.00      0.00       507
+         surprised       0.00      0.00      0.00       964
+            couple       0.00      0.00      0.00       283
 
-         micro avg       0.00      0.00      0.00         6
-         macro avg       0.00      0.00      0.00         6
-      weighted avg       0.00      0.00      0.00         6
-       samples avg       0.00      0.00      0.00         6
+         micro avg       0.00      0.00      0.00      3644
+         macro avg       0.00      0.00      0.00      3644
+      weighted avg       0.00      0.00      0.00      3644
+       samples avg       0.00      0.00      0.00      3644
