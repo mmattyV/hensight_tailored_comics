@@ -78,7 +78,7 @@ class ComicDataset(Dataset):
         return target
 
     def __len__(self):
-        return len(self.items) // 1000
+        return len(self.items) // 2
     
     def __getitem__(self, idx):
         img_path = os.path.join(self.images_dir, self.items[idx][0])

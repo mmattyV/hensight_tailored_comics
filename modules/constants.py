@@ -35,10 +35,10 @@ JSON_FILE = '../labels/comic_labels.json'
 TRAIN_JSON = '../labels/comic_labels_train.json'
 VAL_JSON = '../labels/comic_labels_val.json'
 CUDA_DEVICE = 0
-NUM_EPOCHS = 2
+NUM_EPOCHS = 10
 BASE_LR = 0.001
 DECAY_WEIGHT = 0.1 
-EPOCH_DECAY = 30 
+EPOCH_DECAY = 5 
 BATCH_SIZE = 5
 IMAGES_DIR = '../../comic_images'
 

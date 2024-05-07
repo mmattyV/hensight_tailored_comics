@@ -1,6 +1,6 @@
 from constants import *
 
-def train_model(model, criterion, optimizer, lr_scheduler, dsets, dset_sizes, dloads, num_epochs=100, device=None):
+def train_model(model, criterion, optimizer, lr_scheduler, dsets, dset_sizes, dloads, num_epochs=10, device=None):
     since = time.time()
 
     if device is None:
