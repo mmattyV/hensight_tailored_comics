@@ -1,3 +1,5 @@
+# Hensight Tailored Comics
+
 Generative comics project for Neuro 140
 
 How to get this thing working:
