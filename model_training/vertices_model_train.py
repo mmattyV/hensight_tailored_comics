@@ -54,7 +54,7 @@ if __name__ == '__main__':
             self.maxpool2 = nn.MaxPool1d(kernel_size=3, stride=2, padding=1)
             
             # Fully connected layers for classification
-            self.fc1 = nn.Linear(4096, 2048)  # Adjust the input features according to your feature map size before this layer
+            self.fc1 = nn.Linear(9216, 2048)  # Adjust the input features according to your feature map size before this layer
             self.fc2 = nn.Linear(2048, 1024)
             self.fc3 = nn.Linear(1024, num_classes)
             
@@ -71,12 +71,12 @@ if __name__ == '__main__':
             x = torch.flatten(x, 1)
             x = F.relu(self.fc1(x))
             x = F.relu(self.fc2(x))
-            x = torch.sigmoid(self.fc3(x))  # Sigmoid activation for multi-label classification
+            x = self.fc3(x)  # Sigmoid activation for multi-label classification
             return x
 
     # Model instantiation
     model = CustomVertexCNN(num_classes=NUM_TAGS)
-    criterion = nn.BCELoss()  # Appropriate loss for binary classification tasks
+    criterion = nn.BCEWithLogitsLoss()  # Appropriate loss for binary classification tasks
 
     # Set up the device (CUDA, MPS, or CPU) based on availability and move the model and loss function to that device.
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")

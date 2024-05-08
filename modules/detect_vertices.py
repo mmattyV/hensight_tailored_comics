@@ -72,3 +72,5 @@ def detect_vertices(image_path, draw=False):
         cv2.destroyAllWindows()
 
     return frames_vertices
+
+detect_vertices('../../comic_images/5080.jpg', True)

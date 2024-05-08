@@ -89,7 +89,7 @@ class ComicDataset(Dataset):
         if self.transform:
             image = self.transform(image)
             if image.shape[0] == 1:
-                new_image = torch.zeros((3, 224, 224))
+                new_image = torch.zeros((3, image.shape[1], image.shape[1]))
                 for i in range(3):
                     new_image[i] = image
                 

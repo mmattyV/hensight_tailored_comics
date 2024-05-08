@@ -90,11 +90,11 @@ if __name__ == '__main__':
             x = torch.flatten(x, 1)
             x = F.relu(self.fc1(x))
             x = F.relu(self.fc2(x))
-            x = torch.sigmoid(self.fc3(x))
+            x = self.fc3(x)
             return x
 
     model = CustomCNN(num_classes=NUM_TAGS)
-    criterion = nn.BCELoss()
+    criterion = nn.BCEWithLogitsLoss()
 
     # Set up the device (CUDA, MPS, or CPU) based on availability and move the model and loss function to that device.
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")

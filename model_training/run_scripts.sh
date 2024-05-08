@@ -8,3 +8,5 @@ python EffNetB0_train.py
 
 # Execute the third Python script
 python custom_train.py
+
+python vertices_model_train.py

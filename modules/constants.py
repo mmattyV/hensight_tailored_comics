@@ -46,7 +46,7 @@ DECAY_WEIGHT = 0.1
 EPOCH_DECAY = 5 
 BATCH_SIZE = 5
 IMAGES_DIR = '../../comic_images'
-MAX_NUM_VERTICES = 40
+MAX_NUM_VERTICES = 80
 
 def is_valid_image_file(filename, max_pixels=178956970):
     # Check file name extension
