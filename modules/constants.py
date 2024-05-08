@@ -4,6 +4,11 @@ import multiprocessing
 import torch.nn as nn
 import torch.nn.functional as F
 import timm
+import warnings
+warnings.filterwarnings("ignore", module='cv2')
+import cv2
+warnings.filterwarnings("ignore", module='PIL')
+from scipy.stats import mode
 import torch.optim as optim
 import torchvision
 from torchvision import datasets, models, transforms
@@ -41,6 +46,7 @@ DECAY_WEIGHT = 0.1
 EPOCH_DECAY = 5 
 BATCH_SIZE = 5
 IMAGES_DIR = '../../comic_images'
+MAX_NUM_VERTICES = 40
 
 def is_valid_image_file(filename, max_pixels=178956970):
     # Check file name extension

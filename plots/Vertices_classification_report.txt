@@ -1,0 +1,13 @@
+                    precision    recall  f1-score   support
+
+looking_at_another       0.27      1.00      0.42       883
+               sad       0.07      1.00      0.13       232
+            crying       0.23      1.00      0.37       760
+             angry       0.15      1.00      0.27       504
+         surprised       0.29      1.00      0.45       957
+            couple       0.08      1.00      0.15       277
+
+         micro avg       0.18      1.00      0.31      3613
+         macro avg       0.18      1.00      0.30      3613
+      weighted avg       0.22      1.00      0.36      3613
+       samples avg       0.18      1.00      0.31      3613
